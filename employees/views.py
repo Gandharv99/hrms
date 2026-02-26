@@ -1,6 +1,7 @@
 from rest_framework.generics import ListCreateAPIView, DestroyAPIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.exceptions import NotFound
 from .models import Employee
 from .serializers import EmployeeSerializer
 
@@ -15,10 +16,17 @@ class EmployeeListCreateView(ListCreateAPIView):
 
 class EmployeeDeleteView(DestroyAPIView):
     """
-    DELETE /api/employees/{id}/ - Delete an employee by ID
+    DELETE /api/employees/{employee_id}/ - Delete an employee by EMPLOYEE ID
     """
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
+
+    def get_object(self):
+        employee_id = self.kwargs.get('employee_id')
+        try:
+            return Employee.objects.get(employee_id=employee_id)
+        except Employee.DoesNotExist:
+            raise NotFound(f"Employee with ID {employee_id} does not exist.")
 
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
