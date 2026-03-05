@@ -2,6 +2,12 @@
 
 A Human Resource Management System REST API built with Django REST Framework.
 
+## 🚀 Live Demo
+
+**Base URL:** https://hrms-api-rvgt.onrender.com/
+
+> Deployed on [Render](https://render.com). The service may take 30–60 seconds to wake up on the first request (free tier cold start).
+
 ## Tech Stack
 
 - **Backend:** Python, Django, Django REST Framework
@@ -20,6 +26,8 @@ A Human Resource Management System REST API built with Django REST Framework.
 | GET | `/api/attendance/?employee=EMP001` | Filter by employee |
 | GET | `/api/attendance/?date=2025-02-24` | Filter by date |
 | GET | `/api/dashboard/` | Summary stats |
+
+> **Try it live:** https://hrms-api-rvgt.onrender.com/api/employees/
 
 ## Run Locally
 
